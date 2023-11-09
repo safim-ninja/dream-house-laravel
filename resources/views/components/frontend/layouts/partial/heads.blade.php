@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap">
 
 {{-- bootstrap core css --}}
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
-
 
 {{-- Custom styles for this template --}}
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />

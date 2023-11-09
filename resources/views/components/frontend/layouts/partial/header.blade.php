@@ -69,12 +69,28 @@
                             us</a>
                     </li>
 
-                    <div class="User_option">
-                        <li class="">
-                            <a href="{{ route('signup') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-                            <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                        </li>
-                    </div>
+                    @if (!Auth::user())
+                        <div class="User_option">
+                            <li class="">
+                                <a href="{{ route('signup') }}"><span class="glyphicon glyphicon-user"></span> Sign
+                                    Up</a>
+                                <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span>
+                                    Login</a>
+                            </li>
+                        </div>
+                    @else
+                        <div class="User_option">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <li class="">
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                                        <span class="glyphicon glyphicon-log-in">Logout</span></a>
+                                </li>
+                            </form>
+                        </div>
+                    @endif
 
                 </ul>
 
