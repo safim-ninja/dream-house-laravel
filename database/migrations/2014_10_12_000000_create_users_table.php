@@ -12,17 +12,20 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('role');
             $table->string('name');
             $table->date('dob');
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('verification')->nullable()->default(false);
+            $table->string('photo')->nullable();
+            $table
+                ->enum('verification', ['verified', 'unverified'])
+                ->default('unverified')
+                ->nullable();
             $table->string('nid')->nullable();
             $table->string('bill')->nullable();
-            
+            $table->enum('role', ['admin', 'owner', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
