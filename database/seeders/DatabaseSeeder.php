@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('1234%^&*'),
             'role' => 'owner',
-            'verification' => 'verified',
+            'verification' => true,
         ]);
         // User
         DB::table('users')->insert([

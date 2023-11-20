@@ -20,8 +20,8 @@ return new class extends Migration {
             $table->string('password');
             $table->string('photo')->nullable();
             $table
-                ->enum('verification', ['verified', 'unverified'])
-                ->default('unverified')
+                ->boolean('verification', [true, false])
+                ->default(false)
                 ->nullable();
             $table->string('nid')->nullable();
             $table->string('bill')->nullable();
