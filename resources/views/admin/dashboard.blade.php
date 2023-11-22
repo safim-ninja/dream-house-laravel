@@ -1,3 +1,3 @@
 <x-admin.layouts.master>
-    Admin
+    hello
 </x-admin.layouts.master>
