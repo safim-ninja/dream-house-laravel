@@ -21,8 +21,8 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('photo')->nullable()->default('user.png');
-            
-            // for advertisement 
+
+            // for advertisement
             $table->boolean('submitted')->nullable()->default(false);
             $table->boolean('verification')->nullable()->default(false);
             $table->boolean('confirmed')->nullable()->default(false);

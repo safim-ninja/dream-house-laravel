@@ -107,26 +107,32 @@
                                         <input type="text" name="rent" id="">
                                     </form>
                                 @else
-                                    <h2 class="text-danger"><i>Not verified</i></h2>
-                                    <p class="text-danger"><i>Please provide your NID copy and Electricity bill<br>for
-                                            verification</i></p>
-                                    <form action="" method="post">
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">NID</label>
-                                            <input type="file" class="form-control p-1" name="nid"
-                                                id="" placeholder="NID">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Electricity Bill</label>
-                                            <input type="file" class="mb-3 p-1 form-control" name="bill"
-                                                id="" placeholder="Bill">
-                                        </div>
+                                    @if (Auth::user()->submitted)
+                                        Please wait for admin authorization
+                                    @else
+                                        <h2 class="text-danger"><i>Not verified</i></h2>
+                                        <p class="text-danger"><i>Please provide your NID copy and Electricity
+                                                bill<br>for
+                                                verification</i></p>
+                                        <form action="{{ route('owner.verification', ['id' => Auth::user()->id]) }}"
+                                            method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">NID</label>
+                                                <input type="file" class="form-control p-1" name="nid"
+                                                    id="" placeholder="NID">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Electricity Bill</label>
+                                                <input type="file" class="mb-3 p-1 form-control" name="bill"
+                                                    id="" placeholder="Bill">
+                                            </div>
 
-                                        <button type="submit" class="btn btn-primary">
-                                            Submit
-                                        </button>
-
-                                    </form>
+                                            <button type="submit" class="btn btn-primary">
+                                                Submit
+                                            </button>
+                                        </form>
+                                    @endif
                                 @endif
                             </div>
 

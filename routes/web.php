@@ -45,4 +45,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::get('/owner/dashboard', [OwnerController::class, 'ownerDashboard'])->name('owner.dashboard');
+    Route::post('/owner/verification/{id}', [OwnerController::class, 'verification'])->name('owner.verification');
+
 });
