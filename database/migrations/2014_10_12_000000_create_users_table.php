@@ -11,6 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+
+            // personal detailes
             $table->id();
             $table->string('name');
             $table->date('dob');
@@ -18,13 +20,17 @@ return new class extends Migration {
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('photo')->nullable();
-            $table
-                ->boolean('verification', [true, false])
-                ->default(false)
-                ->nullable();
-            $table->string('nid')->nullable();
-            $table->string('bill')->nullable();
+            $table->string('photo')->nullable()->default('user.png');
+            
+            // for advertisement 
+            $table->boolean('submitted')->nullable()->default(false);
+            $table->boolean('verification')->nullable()->default(false);
+            $table->boolean('confirmed')->nullable()->default(false);
+            $table->string('address')->nullable()->default('null');
+            $table->string('area')->nullable()->default('null');
+            $table->string('nid')->nullable()->default('null');
+            $table->string('bill')->nullable()->default('null');
+
             $table->enum('role', ['admin', 'owner', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();

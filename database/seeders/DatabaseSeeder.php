@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin.dh@gmail.com',
             'phone' => '0123456789',
             'email_verified_at' => now(),
-            'password' => Hash::make('1234%^&*'),
+            'password' => Hash::make('12345678'),
             'role' => 'admin',
         ]);
         // Owners
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'owner@gmail.com',
             'phone' => '1234567567',
             'email_verified_at' => now(),
-            'password' => Hash::make('1234%^&*'),
+            'password' => Hash::make('12345678'),
             'role' => 'owner',
         ]);
         DB::table('users')->insert([
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'owner2@gmail.com',
             'phone' => '12345675213',
             'email_verified_at' => now(),
-            'password' => Hash::make('1234%^&*'),
+            'password' => Hash::make('12345678'),
             'role' => 'owner',
             'verification' => true,
         ]);
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@gmail.com',
             'phone' => '1234323423',
             'email_verified_at' => now(),
-            'password' => Hash::make('1234%^&*'),
+            'password' => Hash::make('12345678'),
             'role' => 'user',
         ]);
 

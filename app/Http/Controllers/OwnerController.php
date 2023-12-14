@@ -10,6 +10,7 @@ class OwnerController extends Controller
 
 
     public function ownerDashboard() {
+        
         return view('owner.dashboard');
     }
 

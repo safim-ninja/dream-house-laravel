@@ -11,8 +11,8 @@
                 <div class="mb-3">
                     <label for="role" class="form-label"><span>Register As:</span></label>
                     <select class="form-select form-select-lg" name="role" id="role">
-                        <option value="1" selected>Owner</option>
-                        <option value="2">Tenant</option>
+                        <option value="owner" selected>Owner</option>
+                        <option value="user">Tenant</option>
                     </select>
                 </div>
                 {{-- <select name="role" id="role" required>

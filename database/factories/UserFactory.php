@@ -26,8 +26,7 @@ class UserFactory extends Factory
                 ->safeEmail(),
             'phone' => fake()->unique()->phoneNumber,
             'email_verified_at' => now(),
-            // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'password' => Hash::make('12341234'),
+            'password' => Hash::make('12345678  '),
             'photo' => fake()->imageUrl('512', '512'),
             'role' => fake()->randomElement(['owner', 'user']),
             'name' => fake()->name(),

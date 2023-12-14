@@ -17,6 +17,7 @@
 
 {{-- Custom styles for this template --}}
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('css/style2.css') }}" /> --}}
 
 {{-- responsive style --}}
 <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />

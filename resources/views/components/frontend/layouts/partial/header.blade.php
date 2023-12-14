@@ -72,7 +72,7 @@
                     @if (!Auth::user())
                         <div class="User_option">
                             <li class="">
-                                <a href="{{ route('signup') }}"><span class="glyphicon glyphicon-user"></span> Sign
+                                <a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> Sign
                                     Up</a>
                                 <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span>
                                     Login</a>

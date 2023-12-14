@@ -6,9 +6,6 @@
     {{-- find section --}}
     <x-frontend.layouts.partial.finder />
 
-    {{-- about section --}}
-    <x-frontend.layouts.partial.about />
-
     {{-- sale section --}}
     <section class="sale_section layout_padding-bottom">
         <div class="container-fluid">
@@ -156,6 +153,9 @@
             </div>
         </div>
     </section>
+
+    {{-- about section --}}
+    <x-frontend.layouts.partial.about />
 
 
 
