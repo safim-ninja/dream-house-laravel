@@ -18,20 +18,9 @@ return new class extends Migration {
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table
-                ->string('photo')
-                ->nullable()
-                ->default('user.png');
-
-            $table
-                ->boolean('submitted')
-                ->nullable()
-                ->default(false);
-            $table
-                ->boolean('confirmation')
-                ->nullable()
-                ->default(false);
-
+            $table->string('photo')->nullable()->default('user.png');
+            $table->boolean('submitted')->nullable()->default(false);
+            $table->boolean('confirmation')->nullable()->default(false);
             $table->enum('role', ['admin', 'owner', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();

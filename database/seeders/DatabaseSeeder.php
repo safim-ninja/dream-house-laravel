@@ -26,26 +26,26 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
         // Owners
-        DB::table('users')->insert([
-            'name' => 'Jarif Rahman',
-            'dob' => '2000-10-09',
-            'email' => 'jarif@gmail.com',
-            'phone' => '1234567567',
-            'photo' => 'user.png',
-            'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
-            'role' => 'owner',
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Mahadi',
-            'dob' => '2000-10-10',
-            'email' => 'mahadi@gmail.com',
-            'phone' => '12345675213',
-            'photo' => 'user.png',
-            'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
-            'role' => 'owner',
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'Jarif Rahman',
+        //     'dob' => '2000-10-09',
+        //     'email' => 'jarif@gmail.com',
+        //     'phone' => '1234567567',
+        //     'photo' => 'user.png',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('12345678'),
+        //     'role' => 'owner',
+        // ]);
+        // DB::table('users')->insert([
+        //     'name' => 'Mahadi',
+        //     'dob' => '2000-10-10',
+        //     'email' => 'mahadi@gmail.com',
+        //     'phone' => '12345675213',
+        //     'photo' => 'user.png',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('12345678'),
+        //     'role' => 'owner',
+        // ]);
         // User
         // DB::table('users')->insert([
         //     'name' => 'Normal User',

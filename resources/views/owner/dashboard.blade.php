@@ -18,8 +18,19 @@
                                         <h4>{{ Auth::user()->name }}</h4>
                                         <p class="text-secondary mb-1">Full Stack Developer</p>
                                         <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                        <button class="btn btn-primary">Follow</button>
-                                        <button class="btn btn-outline-primary">Message</button>
+                                        {{-- <button class="btn btn-primary">Follow</button>
+                                        <button class="btn btn-outline-primary">Message</button> --}}
+                                        <div class="User_option">
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <li class="">
+                                                    <a href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                                        <button class="btn btn-primary">Logout</button></a>
+                                                </li>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

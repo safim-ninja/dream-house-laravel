@@ -24,12 +24,13 @@ class AdminController extends Controller
     }
     public function confirmOwner($id)
     {
-        $owner = User::get()
-            ->where('id', $id)
-            ->first();
+        $owner = User::get()->where('id', $id)->first();
+        $advertisement = Advertisement::get()->where('user_id', $id)->first();
         // dd($owner);
-        $owner->verification = true;
+        $owner->confirmation = true;
+        $advertisement->confirmation = true;
         $owner->save();
+        $advertisement->save();
         return redirect()->route('admin.dashboard');
     }
     /**

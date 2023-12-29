@@ -80,15 +80,9 @@
                         </div>
                     @else
                         <div class="User_option">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <li class="">
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                                        <span class="glyphicon glyphicon-log-in">Logout</span></a>
-                                </li>
-                            </form>
+
+                            <a href="{{ route('owner.dashboard') }}"
+                                class="glyphicon glyphicon-log-in">{{ Auth::user()->name }}</a></a>
                         </div>
                     @endif
 

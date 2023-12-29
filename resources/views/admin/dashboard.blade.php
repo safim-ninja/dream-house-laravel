@@ -20,8 +20,10 @@
                         <th scope="row">{{ $user_i++ }}</th>
                         <td>{{ $user->name }}</td>
                         <td>
-                            @if ($user->verification)
-                                <span class="text-success">Verified</span>
+                            @if ($user->confirmation)
+                            <a href="{{ route('admin.verify-owner', ['id' => $user->id]) }}">
+                                <span class="text-success">Approved</span>
+                            </a>
                             @elseif ($user->submitted)
                                 <a href="{{ route('admin.verify-owner', ['id' => $user->id]) }}">
                                     <span class="text-warning">Submitted</span>
