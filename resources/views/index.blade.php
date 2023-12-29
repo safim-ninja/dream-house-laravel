@@ -13,9 +13,6 @@
                 <h2>
                     House For Sale
                 </h2>
-                <p>
-                    There are many variations of passages of Lorem Ipsum available, but the
-                </p>
             </div>
             <div class="sale_container">
                 {{-- @dd($ads) --}}

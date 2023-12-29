@@ -39,10 +39,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'admindashboard'])->name('admin.dashboard');
     Route::get('/admin/verify-owner/{id}', [AdminController::class, 'verifyOwner'])->name('admin.verify-owner');
     Route::get('/admin/confirm-owner/{id}', [AdminController::class, 'confirmOwner'])->name('admin.confirm-owner');
+    Route::delete('/admin/delete-ad/{id}', [AdvertisementController::class, 'adminDestroy'])->name('admin.advertisement.delete');
 });
 
 Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::get('/owner/dashboard', [OwnerController::class, 'ownerDashboard'])->name('owner.dashboard');
     Route::post('/owner/verification/{id}', [OwnerController::class, 'verification'])->name('owner.verification');
-    Route::post('/owner/placead/{id}', [OwnerController::class, 'placeAd'])->name('owner.placead');
+    Route::post('/owner/place-ad/{id}', [OwnerController::class, 'placeAd'])->name('owner.placead');
+    Route::delete('/owner/delete-ad/{id}', [AdvertisementController::class, 'ownerDestroy'])->name('owner.advertisement.delete');
 });

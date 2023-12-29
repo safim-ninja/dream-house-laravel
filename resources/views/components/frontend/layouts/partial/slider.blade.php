@@ -9,12 +9,8 @@
                             <br>The Best <br>house For You !
                         </h1>
                         <p>Find Your Next
-                            Perfect Place To
-                            Live.</p>
-                        <p>
-                            It is a long established fact that a reader will be distracted by the readable content
-                            of...
-                        </p>
+                            Perfect Place To Live.</p>
+
                         <div class="btn-box">
                             <a href="" class="">
                                 Read More

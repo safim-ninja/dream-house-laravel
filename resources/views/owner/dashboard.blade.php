@@ -107,7 +107,7 @@
 
                             @if (Auth::user()->confirmation)
                                 <div class="card mb-3 mt-3">
-                                    <img src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                    {{-- <img src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
                                         class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ Auth::user()->name }}</h5>
@@ -116,6 +116,74 @@
                                         </p>
                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
                                         </p>
+                                    </div> --}}
+                                    <div class="box p-3">
+                                        {{-- <a href=""> --}}
+                                        <div class="img-box">
+                                            <div id="myCarousel" class="carousel slide" data-bs-ride="true">
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                                            alt="First slide"> --}}
+                                                        <img style="height: 320px;"
+                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo2 }}"
+                                                            alt="Second slide"> --}}
+                                                        <img style="height: 320px;"
+                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo2 }}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo3 }}"
+                                                            alt="Third slide"> --}}
+                                                        <img style="height: 320px;"
+                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo3 }}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#myCarousel" role="button"
+                                                    data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon"
+                                                        aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#myCarousel" role="button"
+                                                    data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon"
+                                                        aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+                                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+                                            {{-- <script>
+                                                    $('.carousel').carousel({
+                                                        interval: 2000
+                                                    });
+                                                </script> --}}
+                                            {{-- <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                                    alt=""> --}}
+                                        </div>
+                                        <div class="detail-box">
+                                            <h6>
+                                                {{ Auth::user()->advertisement->area }}
+                                            </h6>
+                                            <h6>
+                                                BDT {{ Auth::user()->advertisement->rent }}
+                                            </h6>
+                                            <h6>
+                                                Cell: {{ Auth::user()->phone }}
+                                            </h6>
+                                            <div class="icon">
+                                                <i
+                                                    class='bx bx-bed'><span>{{ Auth::user()->advertisement->bed }}</span></i>
+                                                <i
+                                                    class='bx bx-bath'><span>{{ Auth::user()->advertisement->bath }}</span></i>
+                                            </div>
+                                        </div>
+                                        {{-- </a> --}}
                                     </div>
                                 </div>
                             @elseif (Auth::user()->submitted)
@@ -148,6 +216,15 @@
                                             <input type="text" name="rent" id="rent"
                                                 placeholder="TK Rent per month" required>
 
+
+                                            <span>Category</span>
+                                            <select name="category" id="category" class="form-control">
+                                                <option value="" disabled>Select Category</option>
+                                                <option value="Family">Family</option>
+                                                <option value="Sub-Let">Sub-Let</option>
+                                                <option value="Bachelor">Bachelor</option>
+                                            </select>
+
                                             <span>Photos of house<br><i>min 3, max 5</i></span>
                                             <input type="file" name="photo1" id="photo1" required>
                                             <input type="file" name="photo2" id="photo2" required>
@@ -162,9 +239,9 @@
 
 
 
-                                            {{-- <div class="col-md-4"> --}}
+                                            <span>Location</span>
                                             <select name="area" id="location" class="form-control">
-                                                <option value="" disabled selected>Select Location</option>
+                                                <option value="" disabled>Select Location</option>
                                                 <option value="Uttara">Uttara</option>
                                                 <option value="Khilkhet">Khilkhet</option>
                                                 <option value="Banani">Banani</option>
@@ -174,6 +251,7 @@
                                                 <option value="Jatrabari">Jatrabari</option>
                                                 <option value="Mohammadpur">Mohammadpur</option>
                                             </select>
+
                                             {{-- </div> --}}
                                             <br>
                                             <span>Address</span>

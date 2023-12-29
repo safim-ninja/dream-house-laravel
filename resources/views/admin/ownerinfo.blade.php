@@ -4,7 +4,7 @@
     <div class="container mb-5 p-5">
         <div class="d-flex justify-content-between">
             <div class="col-6">
-                <h3 class="text-center">NID</h3>
+                <h3 class="">NID</h3>
                 {{-- <img src="{{ asset('images/verification') }}/{{ $owner->nid }}" class="rounded float-start" alt="...">
         <img src="{{ asset('images/verification') }}/{{ $owner->bill }}" class="rounded float-end" alt="..."> --}}
                 <img class="shadow bg-secondary" style="height: 100px; width: 200px"
@@ -12,7 +12,7 @@
                     alt="...">
             </div>
             <div class="col-6">
-                <h3 class="text-center">BILL</h3>
+                <h3 class="">BILL</h3>
                 <img class="shadow bg-secondary" style="height: 100px; width: 200px"
                     src="{{ asset('images/verification') }}/{{ $owner->advertisement->bill }}" class="rounded float-end"
                     alt="...">
@@ -20,9 +20,8 @@
         </div>
         <div>
             <br>
-            <h3> Advertiment </h3>
-            <div>
-                <h3 class="text-center">BILL</h3>
+            <h3 class="ml-4">Advertiment </h3>
+            <div class="container">
                 <img class="shadow bg-secondary" style="height: 100px; width: 200px"
                     src="{{ asset('images/ads') }}/{{ $owner->advertisement->photo1 }}" class="rounded float-end"
                     alt="...">
@@ -32,15 +31,18 @@
                 <img class="shadow bg-secondary" style="height: 100px; width: 200px"
                     src="{{ asset('images/ads') }}/{{ $owner->advertisement->photo3 }}" class="rounded float-end"
                     alt="...">
-                <img class="shadow bg-secondary" style="height: 100px; width: 200px"
-                    src="{{ asset('images/ads') }}/{{ $owner->advertisement->photo4 }}"
-                    {{ $owner->advertisement->photo4 ?: 'hidden' }} class="rounded float-end" alt="...">
-                <img class="shadow bg-secondary" style="height: 100px; width: 200px"
-                    src="{{ asset('images/ads') }}/{{ $owner->advertisement->photo5 }}"
-                    {{ $owner->advertisement->photo5 ?: 'hidden' }} class="rounded float-end" alt="...">
+                @if ($owner->advertisement->photo4)
+                    <img class="shadow bg-secondary"
+                        style="height: 100px; width: 200px"src="{{ asset('images/ads') }}/{{ $owner->advertisement->photo4 }}"
+                        class="rounded float-end">
+                @endif
+                @if ($owner->advertisement->photo5)
+                    <img class="shadow bg-secondary"
+                        style="height: 100px; width: 200px"src="{{ asset('images/ads') }}/{{ $owner->advertisement->photo5 }}"
+                        class="rounded float-end">
+                @endif
 
-
-                <div>
+                <div class="card p-4 mt-4 col-md-6" style="width: auto">
                     Bed: {{ $owner->advertisement->bed }}<br>
                     Bath: {{ $owner->advertisement->bath }}<br>
                     Rent: {{ $owner->advertisement->rent }}<br>
@@ -50,7 +52,12 @@
             </div>
         </div>
         {{-- @dd($owner) --}}
-        <a class="btn mt-3 text-white" href="{{ route('admin.confirm-owner', ['id' => $owner->id]) }}">Approve</a>
+        @if ($owner->confirmation)
+            <a class="btn mt-3 text-white bg-danger btn-danger"
+                href="{{ route('admin.advertisement.delete', ['id' => $owner->id]) }}">Delete</a>
+        @elseif ($owner->submitted)
+            <a class="btn mt-3 text-white" href="{{ route('admin.confirm-owner', ['id' => $owner->id]) }}">Approve</a>
+        @endif
     </div>
 
 

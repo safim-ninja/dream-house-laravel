@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdvertisementController extends Controller
@@ -12,13 +13,16 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $ads = Advertisement::get()->where('confirmation', true);
+        $ads = Advertisement::where('confirmation', true)
+            ->latest()
+            ->get();
         return view('index', compact('ads'));
     }
     public function search(Request $request)
     {
         $ads = Advertisement::get()
             ->where('confirmation', true)
+            ->where('category', $request->category)
             ->where('area', $request->area);
         return view('index', compact('ads'));
     }
@@ -52,7 +56,6 @@ class AdvertisementController extends Controller
      */
     public function edit(Advertisement $advertisement)
     {
-        //
     }
 
     /**
@@ -66,8 +69,27 @@ class AdvertisementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Advertisement $advertisement)
+    public function adminDestroy($id)
     {
-        //
+        $advertisement = Advertisement::where('user_id', $id)->first();
+        $owner = User::where('id', $id)->first();
+        $owner->update([
+            'submitted' => false,
+            'confirmation' => false,
+        ]);
+        $advertisement->delete();
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function ownerDestroy(Advertisement $advertisement)
+    {
+        $advertisement = Advertisement::where('user_id', $id)->first();
+        $owner = User::where('id', $id)->first();
+        $owner->update([
+            'submitted' => false,
+            'confirmation' => false,
+        ]);
+        $advertisement->delete();
+        return redirect()->route('owner.dashboard');
     }
 }

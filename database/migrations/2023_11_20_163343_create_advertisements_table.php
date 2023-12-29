@@ -27,6 +27,7 @@ return new class extends Migration {
             $table->string('bill')->nullable()->default('null');
             $table->string('address')->nullable()->default('null');
             $table->string('area')->nullable()->default('null');
+            $table->string('category')->nullable()->default('null');
             $table->timestamps();
         });
     }

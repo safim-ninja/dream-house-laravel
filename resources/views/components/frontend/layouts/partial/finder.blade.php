@@ -4,16 +4,16 @@
             @csrf
             <div class=" form-row">
                 <div class="col-md-3">
-                    {{-- <select id="country" class="form-control">
-                        <option value="">Select Categories</option>
-                        <option value="324">Family</option>
-                        <option value="486">Sub-let</option>
-                        <option value="520">Bachelor</option>
-                    </select> --}}
+                    <select name="category" id="category" class="form-control">
+                        <option value="Family" disabled selected>Select Category</option>
+                        <option value="Family">Family</option>
+                        <option value="Sub-Let">Sub-Let</option>
+                        <option value="Bachelor">Bachelor</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <select name="area" class="form-control">
-                        <option value="">Select Location</option>
+                        <option value="Uttara" disabled selected>Select Location</option>
                         <option value="Uttara">Uttara</option>
                         <option value="Khilkhet">Khilkhet</option>
                         <option value="Banani">Banani</option>

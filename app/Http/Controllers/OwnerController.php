@@ -52,7 +52,7 @@ class OwnerController extends Controller
             'rent' => $request->rent,
             'area' => $request->area,
             'address' => $request->address,
-            // 'submitted' => true,
+            'category' => $request->category,
 
             'photo1' => $photo1,
             'photo2' => $photo2,
