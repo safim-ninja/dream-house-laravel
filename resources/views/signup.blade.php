@@ -5,7 +5,7 @@
             <h2>Welcome , Let's get started</h2>
             <p>Already have account <a href="{{ route('login') }}">Log In</a></p>
             <!-- Login Form -->
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -20,11 +20,15 @@
                     <option value="2">Tenant</option>
                 </select><br> --}}
 
+
                 <span>Full Name</span>
                 <input type="text" name="name" id="name" placeholder="Your Name" required>
 
                 <span>Date of Birth</span>
                 <input type="date" name="dob" id="dob" placeholder="Birth date" required>
+
+                <span>Photo</span>
+                <input type="file" name="photo" id="photo" required>
 
                 <span>Enter your email address</span>
                 <input type="email" name="email" id="email" placeholder="yourmail@gmail.com" required>

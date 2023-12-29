@@ -3,14 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Advertisement;
+use App\Models\User;
 
 class AdminController extends Controller
 {
     public function adminDashboard()
     {
-        return view('admin.dashboard');
+        $users = User::get()->where('role', 'owner');
+        $advertisements = Advertisement::get();
+        return view('admin.dashboard', compact('users', 'advertisements'));
     }
 
+    public function verifyOwner($id)
+    {
+        $owner = User::get()
+            ->where('id', $id)
+            ->first();
+        return view('admin.ownerinfo', compact('owner'));
+    }
+    public function confirmOwner($id)
+    {
+        $owner = User::get()
+            ->where('id', $id)
+            ->first();
+        // dd($owner);
+        $owner->verification = true;
+        $owner->save();
+        return redirect()->route('admin.dashboard');
+    }
     /**
      * Display a listing of the resource.
      */

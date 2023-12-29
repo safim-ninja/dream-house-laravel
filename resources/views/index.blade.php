@@ -18,28 +18,73 @@
                 </p>
             </div>
             <div class="sale_container">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/h-1.jpg" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <h6>
-                            The Place
-                        </h6>
-                        <h6>
-                            BDT 18,000
-                        </h6>
-                        <p>
-                            Uttara, Dhaka
-                        </p>
-                        <div class="icon">
-                            <i class='bx bx-bed'><span>4</span></i>
-                            <i class='bx bx-bath'><span>2</span></i>
+                {{-- @dd($ads) --}}
+                @php $indx = 1 @endphp
+                @foreach ($ads as $ad)
+                    <div class="box">
+                        {{-- <a href=""> --}}
+                        <div class="img-box">
+                            <div id="myCarousel{{ $indx }}" class="carousel slide" data-bs-ride="false">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
+                                            alt="First slide"> --}}
+                                        <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
+                                            alt="">
+                                    </div>
+                                    <div class="carousel-item">
+                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo2 }}"
+                                            alt="Second slide"> --}}
+                                        <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo2 }}"
+                                            alt="">
+                                    </div>
+                                    <div class="carousel-item">
+                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo3 }}"
+                                            alt="Third slide"> --}}
+                                        <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo3 }}"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#myCarousel{{ $indx }}" role="button"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#myCarousel{{ $indx++ }}" role="button"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+                            {{-- <script>
+                                    $('.carousel').carousel({
+                                        interval: 2000
+                                    });
+                                </script> --}}
+                            {{-- <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
+                                    alt=""> --}}
                         </div>
+                        <div class="detail-box">
+                            <h6>
+                                {{ $ad->area }}
+                            </h6>
+                            <h6>
+                                BDT {{ $ad->rent }}
+                            </h6>
+                            <h6>
+                                Cell: {{ $ad->user->phone }}
+                            </h6>
+                            <div class="icon">
+                                <i class='bx bx-bed'><span>{{ $ad->bed }}</span></i>
+                                <i class='bx bx-bath'><span>{{ $ad->bath }}</span></i>
+                            </div>
+                        </div>
+                        {{-- </a> --}}
                     </div>
-                </div>
+                @endforeach
 
-                <div class="box">
+                <div class="box row">
                     <div class="img-box">
                         <img src="images/h-2.jpg" alt="">
                     </div>
@@ -61,7 +106,7 @@
                 </div>
 
 
-                <div class="box">
+                <div class="box row ">
                     <div class="img-box">
                         <img src="images/h-3.jpg" alt="">
                     </div>

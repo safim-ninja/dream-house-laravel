@@ -11,7 +11,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ asset('images/user.png') }}" alt="Admin" class="rounded-circle">
+                                    <img src="{{ asset('images/users') }}/{{ Auth::user()->photo }}" alt="User"
+                                        class="rounded-circle">
                                     {{-- <img src="{{ asset('images/user.png') }}" alt="Admin" class="rounded-circle"> --}}
                                     <div class="mt-3">
                                         <h4>{{ Auth::user()->name }}</h4>
@@ -91,8 +92,115 @@
                     <div class="col-md-8">
                         <div class="card bordered px-3">
 
+                            <!-- advertisement -->
+
+                            @if (Auth::user()->confirmation)
+                                <div class="card mb-3 mt-3">
+                                    <img src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ Auth::user()->name }}</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a
+                                            natural lead-in to additional content. This content is a little bit longer.
+                                        </p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            @elseif (Auth::user()->submitted)
+                                {{-- <div class="login container mt-5"> --}}
+                                <div class="card mb-3 ml-3 mt-3 p-3">
+
+                                    <h4>
+                                        Your advertisement has been submitted for review.<br>
+                                        Please wait for admin approval.
+                                    </h4>
+                                </div>
+                            @else
+                                <div class="login container mt-5">
+                                    <div class="login-container">
+                                        <h2>Place an advertisement</h2>
+                                        <!-- Ad Form -->
+                                        <form action="{{ route('owner.placead', ['id' => Auth::user()->id]) }}"
+                                            method="POST" enctype="multipart/form-data">
+                                            @csrf
+
+                                            <span>Bed</span>
+                                            <input type="text" name="bed" id="bed"
+                                                placeholder="Bed numbers" required>
+
+                                            <span>Bath</span>
+                                            <input type="text" name="bath" id="bath"
+                                                placeholder="Bathrooms" required>
+
+                                            <span>Rent</span>
+                                            <input type="text" name="rent" id="rent"
+                                                placeholder="TK Rent per month" required>
+
+                                            <span>Photos of house<br><i>min 3, max 5</i></span>
+                                            <input type="file" name="photo1" id="photo1" required>
+                                            <input type="file" name="photo2" id="photo2" required>
+                                            <input type="file" name="photo3" id="photo3" required>
+                                            <input style="display: none" type="file" name="photo4"
+                                                id="photo4">
+                                            <input style="display: none" type="file" name="photo5   "
+                                                id="photo5">
+                                            <button type="button" id="btn1" class="btn col-4"
+                                                onclick="morePhoto()">Add more</button>
+                                            <br>
+
+
+
+                                            {{-- <div class="col-md-4"> --}}
+                                            <select name="area" id="location" class="form-control">
+                                                <option value="" disabled selected>Select Location</option>
+                                                <option value="Uttara">Uttara</option>
+                                                <option value="Khilkhet">Khilkhet</option>
+                                                <option value="Banani">Banani</option>
+                                                <option value="Dhanmondi">Dhanmondi</option>
+                                                <option value="Gulshan">Gulshan</option>
+                                                <option value="Airport">Airport</option>
+                                                <option value="Jatrabari">Jatrabari</option>
+                                                <option value="Mohammadpur">Mohammadpur</option>
+                                            </select>
+                                            {{-- </div> --}}
+                                            <br>
+                                            <span>Address</span>
+                                            <input type="text" name="address" id="address"
+                                                placeholder="Home Address" required>
+
+                                            <span>NID</span>
+                                            <input type="file" name="nid" id="nid" required>
+
+                                            <span>Bill</span>
+                                            <input type="file" name="bill" id="bill" required>
+
+                                            <span class="text-danger">NID and Bill copy is needed for verification
+                                                purpose. <br>We will never use you information for any other
+                                                use.</span><br>
+
+                                            <input type="submit" value="Place ad" class="button">
+                                        </form>
+                                        <script>
+                                            function morePhoto() {
+                                                var p4 = document.getElementById("photo4");
+                                                var p5 = document.getElementById("photo5");
+                                                var btn = document.getElementById("btn1");
+                                                p4.style.display = "block";
+                                                p5.style.display = "block";
+                                                btn.style.display = "none";
+                                            }
+                                        </script>
+                                    </div>
+                                    <!-- Log In Image -->
+                                    <div class="login-image">
+                                        <img src="images/sign-up.png" alt="">
+                                    </div>
+                                </div>
+                            @endif
+
                             <!-- unaproved -->
-                            <div class="card p-3 mt-3">
+                            {{-- <div class="card p-3 mt-3">
 
                                 @if (Auth::user()->verification)
                                     Place an Advertisement.
@@ -134,30 +242,30 @@
                                         </form>
                                     @endif
                                 @endif
-                            </div>
+                            </div> --}}
 
                             <!-- approved ads -->
-                            <div class="card mb-3 mt-3">
-                                <img src="{{ asset('images/h-1.jpg') }}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            {{-- <div class="card mb-3 mt-3">
+                                    <img src="{{ asset('images/h-1.jpg') }}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural
+                                            lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="card mb-3 mt-3">
-                                <img src="{{ asset('images/h-2.jpg') }}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <div class="card mb-3 mt-3">
+                                    <img src="{{ asset('images/h-2.jpg') }}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural
+                                            lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        {{-- <div class="row gutters-sm">
+                            </div> --}}
+                            {{-- <div class="row gutters-sm">
                             <div class="col-sm-6 mb-3">
                                 <div class="card h-100">
                                     <div class="card-body">
@@ -236,11 +344,11 @@
                             </div>
                         </div> --}}
 
+                        </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
 
 
 
@@ -252,7 +360,7 @@
 
 
 
-        {{-- <div class="container">
+            {{-- <div class="container">
             Name: {{ Auth::user()->name }}<br>
             Role: {{ Auth::user()->role }}<br><br>
 
@@ -289,5 +397,7 @@
                 </form>
             @endif
         </div> --}}
-    </div>
+        </div>
+
+
 </x-frontend.layouts.master>

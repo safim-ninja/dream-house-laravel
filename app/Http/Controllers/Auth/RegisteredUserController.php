@@ -37,6 +37,10 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $photo = time() . '.' . $request->photo->extension();
+
+        $request->photo->move(public_path('images/users'), $photo);
+
         $user = User::create([
             'role' => $request->role,
             'name' => $request->name,
@@ -44,7 +48,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'remember_token' => $request->remember_token,
-
+            'photo' => $photo,
             'password' => Hash::make($request->password),
         ]);
 

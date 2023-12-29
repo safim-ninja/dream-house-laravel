@@ -1,26 +1,27 @@
 <section class="find_section ">
     <div class="container">
-        <form action="">
+        <form action="{{ route('home.search') }}" method="POST">
+            @csrf
             <div class=" form-row">
                 <div class="col-md-3">
-                    <select id="country" class="form-control">
+                    {{-- <select id="country" class="form-control">
                         <option value="">Select Categories</option>
                         <option value="324">Family</option>
                         <option value="486">Sub-let</option>
                         <option value="520">Bachelor</option>
-                    </select>
+                    </select> --}}
                 </div>
                 <div class="col-md-4">
-                    <select id="country" class="form-control">
+                    <select name="area" class="form-control">
                         <option value="">Select Location</option>
-                        <option value="586">Uttara</option>
-                        <option value="624">Khilkhet</option>
-                        <option value="682">Banani</option>
-                        <option value="784">Dhanmondi</option>
-                        <option value="826">Gulshan</option>
-                        <option value="840">Airport</option>
-                        <option value="884">Jatrabari</option>
-                        <option value="924">Mohammadpur</option>
+                        <option value="Uttara">Uttara</option>
+                        <option value="Khilkhet">Khilkhet</option>
+                        <option value="Banani">Banani</option>
+                        <option value="Dhanmondi">Dhanmondi</option>
+                        <option value="Gulshan">Gulshan</option>
+                        <option value="Airport">Airport</option>
+                        <option value="Jatrabari">Jatrabari</option>
+                        <option value="Mohammadpur">Mohammadpur</option>
                     </select>
                 </div>
                 <div class="col-md-2">

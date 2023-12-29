@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Advertisement;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -35,4 +36,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    /**
+     * Get the advertisement associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function advertisement()
+    {
+        return $this->hasOne(Advertisement::class, 'user_id');
+    }
 }

@@ -12,7 +12,15 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        //
+        $ads = Advertisement::get()->where('confirmation', true);
+        return view('index', compact('ads'));
+    }
+    public function search(Request $request)
+    {
+        $ads = Advertisement::get()
+            ->where('confirmation', true)
+            ->where('area', $request->area);
+        return view('index', compact('ads'));
     }
 
     /**

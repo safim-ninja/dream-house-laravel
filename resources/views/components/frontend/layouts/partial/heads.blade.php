@@ -23,3 +23,6 @@
 <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
 
 <link rel="icon" type="image/x-icon" href="{{ asset('home.png') }}">
+
+
+

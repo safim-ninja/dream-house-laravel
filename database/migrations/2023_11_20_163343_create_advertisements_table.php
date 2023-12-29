@@ -13,15 +13,20 @@ return new class extends Migration {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('bed');
             $table->string('bath');
-            $table->string('price');
-            $table->boolean('confirmed')->default(false);
+            $table->string('rent');
+            $table->string('photo1');
+            $table->string('photo2');
+            $table->string('photo3');
+            $table->string('photo4')->nullable();
+            $table->string('photo5')->nullable();
+            $table->boolean('confirmation')->nullable()->default(false);
+            $table->string('nid')->nullable()->default('null');
+            $table->string('bill')->nullable()->default('null');
+            $table->string('address')->nullable()->default('null');
+            $table->string('area')->nullable()->default('null');
             $table->timestamps();
         });
     }
@@ -34,3 +39,7 @@ return new class extends Migration {
         Schema::dropIfExists('advertisements');
     }
 };
+
+// for advertisement
+// $table->boolean('verification')->nullable()->default(false);
+// $table->boolean('confirmed')->default(false);
