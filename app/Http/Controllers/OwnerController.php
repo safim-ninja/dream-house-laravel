@@ -87,7 +87,7 @@ class OwnerController extends Controller
     public function paymentAdd(Request $request)
     {
         $trximg = time() . '-' . $request->id . '-trx' . '.' . $request->trximage->extension();
-        $request->trximage->move(public_path('public/images/payments'), $trximg);
+        $request->trximage->move(public_path('images/payments'), $trximg);
 
         Payment::create([
             'user_id' => $request->id,
