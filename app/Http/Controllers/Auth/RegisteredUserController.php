@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
 
         $photo = time() . '.' . $request->photo->extension();
 
-        $request->photo->move(public_path('images/users'), $photo);
+        $request->photo->move(public_path('/public/images/users'), $photo);
 
         $user = User::create([
             'role' => $request->role,
