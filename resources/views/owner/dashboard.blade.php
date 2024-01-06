@@ -11,7 +11,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="public/images/users/{{ Auth::user()->photo }}" alt="User"
+                                    <img src="{{ asset('images') }}/users/{{ Auth::user()->photo }}" alt="User"
                                         class="rounded-circle">
                                     {{-- <img src="public/images/user.png') }}" alt="Admin" class="rounded-circle"> --}}
                                     <div class="mt-3">
