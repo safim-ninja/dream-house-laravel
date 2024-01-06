@@ -26,19 +26,23 @@ class AdminController extends Controller
             ->first();
         return view('admin.ownerAds', compact('owner', 'ads'));
     }
-    public function confirmOwner($id)
+
+    public function confirmAd($id)
     {
-        $owner = User::get()
-            ->where('id', $id)
-            ->first();
         $advertisement = Advertisement::get()
             ->where('user_id', $id)
             ->first();
-        // dd($owner);
-        // $owner->confirmation = true;
         $advertisement->confirmation = true;
-        $owner->save();
         $advertisement->save();
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function deleteAd($id)
+    {
+        $advertisement = Advertisement::get()
+            ->where('user_id', $id)
+            ->first();
+        $advertisement->delete();
         return redirect()->route('admin.dashboard');
     }
 

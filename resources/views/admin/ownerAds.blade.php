@@ -60,10 +60,10 @@
                 {{-- @dd($owner) --}}
                 @if ($ad->confirmation)
                     <a class="btn mt-3 col-4 text-white bg-danger btn-danger"
-                        href="{{ route('admin.advertisement.delete', ['id' => $owner->id]) }}">Delete</a>
+                        href="{{ route('admin.deleteAd', ['id' => $ad->id]) }}">Delete</a>
                 @else
                     <a class="btn mt-3 col-4 text-white"
-                        href="{{ route('admin.confirm-owner', ['id' => $owner->id]) }}">Approve</a>
+                        href="{{ route('admin.confirmAd', ['id' => $ad->id]) }}">Approve</a>
                 @endif
             </div>
         @endforeach
