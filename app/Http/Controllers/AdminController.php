@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function confirmAd($id)
     {
         $advertisement = Advertisement::get()
-            ->where('user_id', $id)
+            ->where('id', $id)
             ->first();
         $advertisement->confirmation = true;
         $advertisement->save();
@@ -40,8 +40,10 @@ class AdminController extends Controller
     public function deleteAd($id)
     {
         $advertisement = Advertisement::get()
-            ->where('user_id', $id)
+            ->where('id', $id)
             ->first();
+        $user = User::find($advertisement->user_id);
+        $user->ad_count = $user->ad_count - 1;
         $advertisement->delete();
         return redirect()->route('admin.dashboard');
     }
