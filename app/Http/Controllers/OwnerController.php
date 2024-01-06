@@ -24,23 +24,23 @@ class OwnerController extends Controller
         $user = User::find($id);
 
         $photo1 = time() . '-' . $user->id . '-photo1' . '.' . $request->photo1->extension();
-        $request->photo1->move(public_path('public/images/ads'), $photo1);
+        $request->photo1->move(public_path('/images/ads'), $photo1);
 
         $photo2 = time() . '-' . $user->id . '-photo2' . '.' . $request->photo2->extension();
-        $request->photo2->move(public_path('public/images/ads'), $photo2);
+        $request->photo2->move(public_path('/images/ads'), $photo2);
 
         $photo3 = time() . '-' . $user->id . '-photo3' . '.' . $request->photo3->extension();
-        $request->photo3->move(public_path('public/images/ads'), $photo3);
+        $request->photo3->move(public_path('/images/ads'), $photo3);
 
         if ($request->photo4) {
             $photo4 = time() . '-' . $user->id . '-photo4' . '.' . $request->photo4->extension();
-            $request->photo4->move(public_path('public/images/ads'), $photo4);
+            $request->photo4->move(public_path('/images/ads'), $photo4);
         } else {
             $photo4 = null;
         }
         if ($request->photo5) {
             $photo5 = time() . '-' . $user->id . '-photo5' . '.' . $request->photo5->extension();
-            $request->photo5->move(public_path('public/images/ads'), $photo5);
+            $request->photo5->move(public_path('/images/ads'), $photo5);
         } else {
             $photo5 = null;
         }
@@ -48,8 +48,8 @@ class OwnerController extends Controller
         $nid = time() . '-' . $user->id . '-nid' . '.' . $request->nid->extension();
         $bill = time() . '-' . $user->id . '-bill' . '.' . $request->bill->extension();
 
-        $request->nid->move(public_path('public/images/verification'), $nid);
-        $request->bill->move(public_path('public/images/verification'), $bill);
+        $request->nid->move(public_path('/images/verification'), $nid);
+        $request->bill->move(public_path('/images/verification'), $bill);
 
         Advertisement::create([
             'user_id' => $id,
@@ -130,8 +130,8 @@ class OwnerController extends Controller
         $nid = time() . '-' . $user->id . '-nid' . '.' . $request->nid->extension();
         $bill = time() . '-' . $user->id . '-bill' . '.' . $request->bill->extension();
 
-        $request->nid->move(public_path('public/images/verification'), $nid);
-        $request->bill->move(public_path('public/images/verification'), $bill);
+        $request->nid->move(public_path('/images/verification'), $nid);
+        $request->bill->move(public_path('/images/verification'), $bill);
         // dd($request->nid);
         // dd($nid);
 
