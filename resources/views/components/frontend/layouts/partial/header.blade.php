@@ -6,7 +6,8 @@
             <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                 <ul class="navbar-nav ml-auto">
                     {{-- Megamenu --}}
-                    <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-uppercase">Home</a>
+                    <li class="nav-item"><a href="{{ route('home') }}"
+                            class="nav-link font-weight-bold text-uppercase">Home</a>
                     </li>
                     <li class="nav-item dropdown megamenu"><a id="megamenu" href="" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"
@@ -20,12 +21,15 @@
                                                 <div class="col-sm-6 col-lg-3 mb-4">
                                                     <h6 class="font-weight-bold text-uppercase">Rent</h6>
                                                     <ul class="list-unstyled">
-                                                        <li class="nav-item"><a href="#"
+                                                        <li class="nav-item"><a
+                                                                href="{{ route('home.searchCategory', ['category' => 'Family']) }}"
                                                                 class="nav-link text-small pb-0">Family</a></li>
-                                                        <li class="nav-item"><a href="#"
+                                                        <li class="nav-item"><a
+                                                                href="{{ route('home.searchCategory', ['category' => 'Sub-Let']) }}"
                                                                 class="nav-link text-small pb-0 ">Sub-Let</a>
                                                         </li>
-                                                        <li class="nav-item"><a href="#"
+                                                        <li class="nav-item"><a
+                                                                href="{{ route('home.searchCategory', ['category' => 'Bachelor']) }}"
                                                                 class="nav-link text-small pb-0 ">Bachelor</a>
                                                         </li>
                                                     </ul>

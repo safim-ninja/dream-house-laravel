@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AdvertisementController::class, 'index'])->name('home');
 Route::post('/search', [AdvertisementController::class, 'search'])->name('home.search');
+Route::get('/search/{category}', [AdvertisementController::class, 'searchCategory'])->name('home.searchCategory');
 
 Route::get('/dashboard', [AdvertisementController::class, 'index']);
 
@@ -37,13 +38,19 @@ require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'admindashboard'])->name('admin.dashboard');
-    Route::get('/admin/verify-owner/{id}', [AdminController::class, 'verifyOwner'])->name('admin.verify-owner');
+    Route::get('/admin/owner-ads/{id}', [AdminController::class, 'ownerAds'])->name('admin.ownerAds');
     Route::get('/admin/confirm-owner/{id}', [AdminController::class, 'confirmOwner'])->name('admin.confirm-owner');
     Route::delete('/admin/delete-ad/{id}', [AdvertisementController::class, 'adminDestroy'])->name('admin.advertisement.delete');
+
+    //payments
+    Route::get('/admin/user-payments-list/{id}', [AdminController::class, 'userPaymentList'])->name('admin.userPaymentList');
+    Route::get('/admin/user-payments-approve/{id}', [AdminController::class, 'approvePayment'])->name('admin.approvePayment');
 });
 
 Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::get('/owner/dashboard', [OwnerController::class, 'ownerDashboard'])->name('owner.dashboard');
+    Route::get('/owner/payment', [OwnerController::class, 'payment'])->name('owner.payment');
+    Route::post('/owner/payment/add', [OwnerController::class, 'paymentAdd'])->name('owner.payment.add');
     Route::post('/owner/verification/{id}', [OwnerController::class, 'verification'])->name('owner.verification');
     Route::post('/owner/place-ad/{id}', [OwnerController::class, 'placeAd'])->name('owner.placead');
     Route::delete('/owner/delete-ad/{id}', [AdvertisementController::class, 'ownerDestroy'])->name('owner.advertisement.delete');

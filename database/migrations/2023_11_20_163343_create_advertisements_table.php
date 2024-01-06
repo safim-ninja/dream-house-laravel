@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->string('photo3');
             $table->string('photo4')->nullable();
             $table->string('photo5')->nullable();
+            $table->boolean('submitted')->nullable()->default(false);
             $table->boolean('confirmation')->nullable()->default(false);
             $table->string('nid')->nullable()->default('null');
             $table->string('bill')->nullable()->default('null');

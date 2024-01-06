@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Models\User;
+use App\Models\Payment;
 
 class AdminController extends Controller
 {
@@ -15,24 +16,51 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('users', 'advertisements'));
     }
 
-    public function verifyOwner($id)
+    public function ownerAds($id)
+    {
+        $ads = Advertisement::where('user_id', $id)
+            ->latest()
+            ->get();
+        $owner = User::get()
+            ->where('id', $id)
+            ->first();
+        return view('admin.ownerAds', compact('owner', 'ads'));
+    }
+    public function confirmOwner($id)
     {
         $owner = User::get()
             ->where('id', $id)
             ->first();
-        return view('admin.ownerinfo', compact('owner'));
-    }
-    public function confirmOwner($id)
-    {
-        $owner = User::get()->where('id', $id)->first();
-        $advertisement = Advertisement::get()->where('user_id', $id)->first();
+        $advertisement = Advertisement::get()
+            ->where('user_id', $id)
+            ->first();
         // dd($owner);
-        $owner->confirmation = true;
+        // $owner->confirmation = true;
         $advertisement->confirmation = true;
         $owner->save();
         $advertisement->save();
         return redirect()->route('admin.dashboard');
     }
+
+    public function userPaymentList($id)
+    {
+        $payments = Payment::where('user_id', $id)
+            ->latest()
+            ->get();
+        return view('admin.user-payments-list', compact('payments'));
+        //
+    }
+
+    public function approvePayment($id)
+    {
+        $user = User::find($id);
+        $user->update([
+            'payment_status' => 2,
+        ]);
+        return redirect()->route('admin.dashboard');
+        //
+    }
+
     /**
      * Display a listing of the resource.
      */

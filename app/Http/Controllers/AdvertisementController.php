@@ -22,8 +22,15 @@ class AdvertisementController extends Controller
     {
         $ads = Advertisement::get()
             ->where('confirmation', true)
-            ->where('category', $request->category)
+            ->where('category', $request->category  )
             ->where('area', $request->area);
+        return view('index', compact('ads'));
+    }
+    public function searchCategory($category)
+    {
+        $ads = Advertisement::get()
+            ->where('confirmation', true)
+            ->where('category', $category);
         return view('index', compact('ads'));
     }
 

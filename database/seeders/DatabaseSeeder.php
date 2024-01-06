@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     {
         // Admin
         DB::table('users')->insert([
-            'name' => 'Admin',
+            'name' => 'Bristy Saha',
             'dob' => '2000-12-05',
-            'email' => 'admin@gmail.com',
+            'email' => 'bristy@gmail.com',
             'phone' => '0123456789',
             'photo' => 'user.png',
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('admin987%'),
             'role' => 'admin',
         ]);
         // Owners

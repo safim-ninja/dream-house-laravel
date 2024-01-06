@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Advertisement;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -10,7 +12,11 @@ class OwnerController extends Controller
 {
     public function ownerDashboard()
     {
-        return view('owner.dashboard');
+        $ads = Advertisement::where('user_id', Auth::user()->id)
+            ->where('confirmation', true)
+            ->latest()
+            ->get();
+        return view('owner.dashboard', compact('ads'));
     }
 
     public function placeAd(Request $request, $id)
@@ -53,6 +59,7 @@ class OwnerController extends Controller
             'area' => $request->area,
             'address' => $request->address,
             'category' => $request->category,
+            'submitted' => true,
 
             'photo1' => $photo1,
             'photo2' => $photo2,
@@ -63,7 +70,7 @@ class OwnerController extends Controller
             'bill' => $bill,
         ]);
 
-        $user->submitted = true;
+        $user->ad_count = $user->ad_count + 1;
         $user->save();
 
         return redirect()->route('owner.dashboard');
@@ -72,9 +79,31 @@ class OwnerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function payment()
     {
-        //
+        return view('owner.payment');
+    }
+
+    public function paymentAdd(Request $request)
+    {
+        $trximg = time() . '-' . $request->id . '-trx' . '.' . $request->trximage->extension();
+        $request->trximage->move(public_path('images/payments'), $trximg);
+
+        Payment::create([
+            'user_id' => $request->id,
+            'amount' => $request->amount,
+            'transaction' => $request->transaction,
+            'phone' => $request->phone,
+            'trximage' => $trximg,
+        ]);
+
+        $user = User::find($request->id);
+        $user->update([
+            'payment_status' => 1,
+        ]);
+        // dd($request->all());
+
+        return redirect()->route('owner.dashboard');
     }
 
     /**

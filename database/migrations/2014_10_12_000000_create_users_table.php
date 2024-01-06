@@ -19,8 +19,8 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('photo')->nullable()->default('user.png');
-            $table->boolean('submitted')->nullable()->default(false);
-            $table->boolean('confirmation')->nullable()->default(false);
+            $table->tinyInteger('payment_status')->default(0)->comment('0=>unpaid, 1=>pending, 2=>approved');
+            $table->integer('ad_count')->unsigned()->default(0);
             $table->enum('role', ['admin', 'owner', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();

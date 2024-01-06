@@ -105,9 +105,11 @@
 
                             <!-- advertisement -->
 
-                            @if (Auth::user()->confirmation)
+                            {{-- @dd($ads) --}}
+                            {{-- @if (Auth::user()->confirmation) --}}
+                            @foreach ($ads as $ad)
                                 <div class="card mb-3 mt-3">
-                                    {{-- <img src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                    {{-- <img src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
                                         class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ Auth::user()->name }}</h5>
@@ -123,24 +125,24 @@
                                             <div id="myCarousel" class="carousel slide" data-bs-ride="true">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
                                                             alt="First slide"> --}}
                                                         <img style="height: 320px;"
-                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                                            src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
                                                             alt="">
                                                     </div>
                                                     <div class="carousel-item">
-                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo2 }}"
+                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo2 }}"
                                                             alt="Second slide"> --}}
                                                         <img style="height: 320px;"
-                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo2 }}"
+                                                            src="{{ asset('images/ads') }}/{{ $ad->photo2 }}"
                                                             alt="">
                                                     </div>
                                                     <div class="carousel-item">
-                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo3 }}"
+                                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo3 }}"
                                                             alt="Third slide"> --}}
                                                         <img style="height: 320px;"
-                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo3 }}"
+                                                            src="{{ asset('images/ads') }}/{{ $ad->photo3 }}"
                                                             alt="">
                                                     </div>
                                                 </div>
@@ -163,31 +165,31 @@
                                                         interval: 2000
                                                     });
                                                 </script> --}}
-                                            {{-- <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
+                                            {{-- <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
                                                     alt=""> --}}
                                         </div>
                                         <div class="detail-box">
                                             <h6>
-                                                {{ Auth::user()->advertisement->area }}
+                                                {{ $ad->area }}
                                             </h6>
                                             <h6>
-                                                BDT {{ Auth::user()->advertisement->rent }}
+                                                BDT {{ $ad->rent }}
                                             </h6>
                                             <h6>
                                                 Cell: {{ Auth::user()->phone }}
                                             </h6>
                                             <div class="icon">
-                                                <i
-                                                    class='bx bx-bed'><span>{{ Auth::user()->advertisement->bed }}</span></i>
-                                                <i
-                                                    class='bx bx-bath'><span>{{ Auth::user()->advertisement->bath }}</span></i>
+                                                <i class='bx bx-bed'><span>{{ $ad->bed }}</span></i>
+                                                <i class='bx bx-bath'><span>{{ $ad->bath }}</span></i>
                                             </div>
                                         </div>
                                         {{-- </a> --}}
                                     </div>
                                 </div>
-                            @elseif (Auth::user()->submitted)
-                                {{-- <div class="login container mt-5"> --}}
+                            @endforeach
+
+                            {{-- @elseif (Auth::user()->submitted)
+                                <div class="login container mt-5">
                                 <div class="card mb-3 ml-3 mt-3 p-3">
 
                                     <h4>
@@ -195,6 +197,12 @@
                                         Please wait for admin approval.
                                     </h4>
                                 </div>
+                            @else --}}
+                            @if (Auth::user()->ad_count >= 1 && Auth::user()->payment_status != 2)
+                                You get 1 free ad.
+                                <a href="{{ route('owner.payment') }}">Please make payment of <span
+                                        class="text-bolder">1000Tk</span>
+                                    to post more ads</a>
                             @else
                                 <div class="login container mt-5">
                                     <div class="login-container">
@@ -287,6 +295,9 @@
                                     </div>
                                 </div>
                             @endif
+
+
+                            {{-- @endif --}}
 
                             <!-- unaproved -->
                             {{-- <div class="card p-3 mt-3">

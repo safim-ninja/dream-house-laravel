@@ -18,7 +18,7 @@
                 {{-- @dd($ads) --}}
                 @php $indx = 1 @endphp
                 @foreach ($ads as $ad)
-                    <div class="box">
+                    <div class="box card p-1">
                         {{-- <a href=""> --}}
                         <div class="img-box">
                             <div id="myCarousel{{ $indx }}" class="carousel slide" data-bs-ride="false">
@@ -63,6 +63,9 @@
                                     alt=""> --}}
                         </div>
                         <div class="detail-box">
+                            <h6>
+                                {{ $ad->user->name }}
+                            </h6>
                             <h6>
                                 {{ $ad->area }}
                             </h6>
