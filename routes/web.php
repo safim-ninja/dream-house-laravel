@@ -40,7 +40,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'admindashboard'])->name('admin.dashboard');
     Route::get('/admin/owner-ads/{id}', [AdminController::class, 'ownerAds'])->name('admin.ownerAds');
     Route::get('/admin/confirm-ad/{id}', [AdminController::class, 'confirmAd'])->name('admin.confirmAd');
-    Route::get('/admin/delete-ad/{id}', [AdvertisementController::class, 'deleteAd'])->name('admin.deleteAd');
+    Route::get('/admin/delete-ad/{id}', [AdminController::class, 'deleteAd'])->name('admin.deleteAd');
 
     //payments
     Route::get('/admin/user-payments-list/{id}', [AdminController::class, 'userPaymentList'])->name('admin.userPaymentList');
