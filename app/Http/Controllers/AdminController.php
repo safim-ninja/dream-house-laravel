@@ -44,6 +44,7 @@ class AdminController extends Controller
             ->first();
         $user = User::find($advertisement->user_id);
         $user->ad_count = $user->ad_count - 1;
+        $user->save();
         $advertisement->delete();
         return redirect()->route('admin.dashboard');
     }
