@@ -9,7 +9,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ asset('images/users') }}/{{ Auth::user()->photo }}" alt="User"
+                                    <img src="images/users/{{ Auth::user()->photo }}" alt="User"
                                         class="rounded-circle">
                                     <div class="mt-3">
                                         <h4>{{ Auth::user()->name }}</h4>
@@ -100,103 +100,38 @@
 
                             <!-- advertisement -->
 
-                            @if (Auth::user()->confirmation)
-                                <div class="card mb-3 mt-3">
-                                    <div class="box p-3">
-                                        <div class="img-box">
-                                            <div id="myCarousel" class="carousel slide" data-bs-ride="true">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <img style="height: 320px;"
-                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo1 }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img style="height: 320px;"
-                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo2 }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img style="height: 320px;"
-                                                            src="{{ asset('images/ads') }}/{{ Auth::user()->advertisement->photo3 }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <a class="carousel-control-prev" href="#myCarousel" role="button"
-                                                    data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon"
-                                                        aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#myCarousel" role="button"
-                                                    data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon"
-                                                        aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </div>
-                                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-                                        </div>
-                                        <div class="detail-box">
-                                            <h6>
-                                                {{ Auth::user()->advertisement->area }}
-                                            </h6>
-                                            <h6>
-                                                BDT {{ Auth::user()->advertisement->rent }}
-                                            </h6>
-                                            <h6>
-                                                Cell: {{ Auth::user()->phone }}
-                                            </h6>
-                                            <div class="icon">
-                                                <i
-                                                    class='bx bx-bed'><span>{{ Auth::user()->advertisement->bed }}</span></i>
-                                                <i
-                                                    class='bx bx-bath'><span>{{ Auth::user()->advertisement->bath }}</span></i>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="login container">
+                                <div class="login-container">
+                                    <h2>Please provide payment information below</h2>
+                                    <!-- Ad Form -->
+                                    <form action="{{ route('owner.payment.add', ['id' => Auth::user()->id]) }}"
+                                        method="POST" enctype="multipart/form-data">
+                                        @csrf
+
+                                        <span>Amount</span>
+                                        <input type="text" name="amount" id="amount"
+                                            placeholder="Paid amount" required>
+
+                                        <span>Transaction ID</span>
+                                        <input type="text" name="transaction" id="transaction"
+                                            placeholder="Trx Id" required>
+
+                                        <span>Phone</span>
+                                        <input type="text" name="phone" id="phone"
+                                            placeholder="Bkash / Nagad number" required>
+
+                                        <span>Image of transaction<br><i>proof of payment</i></span>
+                                        <input type="file" name="trximage" id="trximage" required>
+                                        <br>
+
+                                        <input type="submit" value="Submit" class="button">
+                                    </form>
                                 </div>
-                            @elseif (Auth::user()->submitted)
-                                <div class="card mb-3 ml-3">
-                                    <h4>
-                                        Your advertisement has been submitted for review.<br>
-                                        Please wait for admin approval.
-                                    </h4>
+                                <!-- Log In Image -->
+                                <div class="login-image">
+                                    <img src="images/sign-up.png" alt="">
                                 </div>
-                            @else
-                                <div class="login container">
-                                    <div class="login-container">
-                                        <h2>Please provide payment information below</h2>
-                                        <!-- Ad Form -->
-                                        <form action="{{ route('owner.payment.add', ['id' => Auth::user()->id]) }}"
-                                            method="POST" enctype="multipart/form-data">
-                                            @csrf
-
-                                            <span>Amount</span>
-                                            <input type="text" name="amount" id="amount"
-                                                placeholder="Paid amount" required>
-
-                                            <span>Transaction ID</span>
-                                            <input type="text" name="transaction" id="transaction"
-                                                placeholder="Trx Id" required>
-
-                                            <span>Phone</span>
-                                            <input type="text" name="phone" id="phone"
-                                                placeholder="Bkash / Nagad number" required>
-
-                                            <span>Image of transaction<br><i>proof of payment</i></span>
-                                            <input type="file" name="trximage" id="trximage" required>
-                                            <br>
-
-                                            <input type="submit" value="Submit" class="button">
-                                        </form>
-                                    </div>
-                                    <!-- Log In Image -->
-                                    <div class="login-image">
-                                        <img src="images/sign-up.png" alt="">
-                                    </div>
-                                </div>
-                            @endif
+                            </div>
                         </div>
                     </div>
                 </div>

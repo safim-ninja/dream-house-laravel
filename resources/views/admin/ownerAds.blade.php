@@ -11,16 +11,16 @@
                 <div class="d-flex justify-content-between">
                     <div class="col-6">
                         <h3 class="">NID</h3>
-                        {{-- <img src="{{ asset('images/verification') }}/{{ $owner->nid }}" class="rounded float-start" alt="...">
-        <img src="{{ asset('images/verification') }}/{{ $owner->bill }}" class="rounded float-end" alt="..."> --}}
+                        {{-- <img src="images/verification/{{ $owner->nid }}" class="rounded float-start" alt="...">
+        <img src="images/verification/{{ $owner->bill }}" class="rounded float-end" alt="..."> --}}
                         <img class="shadow bg-secondary" style="height: 100px; width: 200px"
-                            src="{{ asset('images/verification') }}/{{ $ad->nid }}" class="rounded float-start"
+                            src="images/verification/{{ $ad->nid }}" class="rounded float-start"
                             alt="...">
                     </div>
                     <div class="col-6">
                         <h3 class="">BILL</h3>
                         <img class="shadow bg-secondary" style="height: 100px; width: 200px"
-                            src="{{ asset('images/verification') }}/{{ $ad->bill }}" class="rounded float-end"
+                            src="images/verification/{{ $ad->bill }}" class="rounded float-end"
                             alt="...">
                     </div>
                 </div>
@@ -29,22 +29,22 @@
                     <h3 class="ml-4">Advertiment </h3>
                     <div class="container">
                         <img class="shadow bg-secondary" style="height: 100px; width: 200px"
-                            src="{{ asset('images/ads') }}/{{ $ad->photo1 }}" class="rounded float-end"
+                            src="images/ads/{{ $ad->photo1 }}" class="rounded float-end"
                             alt="...">
                         <img class="shadow bg-secondary" style="height: 100px; width: 200px"
-                            src="{{ asset('images/ads') }}/{{ $ad->photo2 }}" class="rounded float-end"
+                            src="images/ads/{{ $ad->photo2 }}" class="rounded float-end"
                             alt="...">
                         <img class="shadow bg-secondary" style="height: 100px; width: 200px"
-                            src="{{ asset('images/ads') }}/{{ $ad->photo3 }}" class="rounded float-end"
+                            src="images/ads/{{ $ad->photo3 }}" class="rounded float-end"
                             alt="...">
                         @if ($ad->photo4)
                             <img class="shadow bg-secondary"
-                                style="height: 100px; width: 200px"src="{{ asset('images/ads') }}/{{ $ad->photo4 }}"
+                                style="height: 100px; width: 200px"src="images/ads/{{ $ad->photo4 }}"
                                 class="rounded float-end">
                         @endif
                         @if ($ad->photo5)
                             <img class="shadow bg-secondary"
-                                style="height: 100px; width: 200px"src="{{ asset('images/ads') }}/{{ $ad->photo5 }}"
+                                style="height: 100px; width: 200px"src="images/ads/{{ $ad->photo5 }}"
                                 class="rounded float-end">
                         @endif
 
