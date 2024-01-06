@@ -11,9 +11,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ asset('public/images') }}/users/{{ Auth::user()->photo }}" alt="User"
-                                        class="rounded-circle">
-                                    {{-- <img src="public/images/user.png') }}" alt="Admin" class="rounded-circle"> --}}
+                                    <img src="{{ asset('/public/images/users') }}/{{ Auth::user()->photo }}"
+                                        alt="User" class="rounded-circle">
+                                    {{-- <img src="{{ asset('/public/images/user.png') }}" alt="Admin" class="rounded-circle"> --}}
                                     <div class="mt-3">
                                         <h4>{{ Auth::user()->name }}</h4>
                                         <p class="text-secondary mb-1">Full Stack Developer</p>
@@ -109,7 +109,7 @@
                             {{-- @if (Auth::user()->confirmation) --}}
                             @foreach ($ads as $ad)
                                 <div class="card mb-3 mt-3">
-                                    {{-- <img src="public/images/ads/{{ $ad->photo1 }}"
+                                    {{-- <img src="{{ asset('/public/images/ads') }}/{{ $ad->photo1 }}"
                                         class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ Auth::user()->name }}</h5>
@@ -125,24 +125,24 @@
                                             <div id="myCarousel" class="carousel slide" data-bs-ride="true">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        {{-- <img class="d-block w-100" src="public/images/ads/{{ $ad->photo1 }}"
+                                                        {{-- <img class="d-block w-100" src="{{ asset('/public/images/ads') }}/{{ $ad->photo1 }}"
                                                             alt="First slide"> --}}
                                                         <img style="height: 320px;"
-                                                            src="public/images/ads/{{ $ad->photo1 }}"
+                                                            src="{{ asset('/public/images/ads') }}/{{ $ad->photo1 }}"
                                                             alt="">
                                                     </div>
                                                     <div class="carousel-item">
-                                                        {{-- <img class="d-block w-100" src="public/images/ads/{{ $ad->photo2 }}"
+                                                        {{-- <img class="d-block w-100" src="{{ asset('/public/images/ads') }}/{{ $ad->photo2 }}"
                                                             alt="Second slide"> --}}
                                                         <img style="height: 320px;"
-                                                            src="public/images/ads/{{ $ad->photo2 }}"
+                                                            src="{{ asset('/public/images/ads') }}/{{ $ad->photo2 }}"
                                                             alt="">
                                                     </div>
                                                     <div class="carousel-item">
-                                                        {{-- <img class="d-block w-100" src="public/images/ads/{{ $ad->photo3 }}"
+                                                        {{-- <img class="d-block w-100" src="{{ asset('/public/images/ads') }}/{{ $ad->photo3 }}"
                                                             alt="Third slide"> --}}
                                                         <img style="height: 320px;"
-                                                            src="public/images/ads/{{ $ad->photo3 }}"
+                                                            src="{{ asset('/public/images/ads') }}/{{ $ad->photo3 }}"
                                                             alt="">
                                                     </div>
                                                 </div>
@@ -165,7 +165,7 @@
                                                         interval: 2000
                                                     });
                                                 </script> --}}
-                                            {{-- <img style="height: 320px;" src="public/images/ads/{{ $ad->photo1 }}"
+                                            {{-- <img style="height: 320px;" src="{{ asset('/public/images/ads') }}/{{ $ad->photo1 }}"
                                                     alt=""> --}}
                                         </div>
                                         <div class="detail-box">
@@ -291,7 +291,7 @@
                                     </div>
                                     <!-- Log In Image -->
                                     <div class="login-image">
-                                        <img src="public/images/sign-up.png" alt="">
+                                        <img src="images/sign-up.png" alt="">
                                     </div>
                                 </div>
                             @endif
@@ -346,7 +346,7 @@
 
                             <!-- approved ads -->
                             {{-- <div class="card mb-3 mt-3">
-                                    <img src="public/images/h-1.jpg') }}" class="card-img-top" alt="...">
+                                    <img src="{{ asset('/public/images/h-1.jpg') }}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <p class="card-text">This is a wider card with supporting text below as a natural
@@ -356,7 +356,7 @@
                                 </div>
 
                                 <div class="card mb-3 mt-3">
-                                    <img src="public/images/h-2.jpg') }}" class="card-img-top" alt="...">
+                                    <img src="{{ asset('/public/images/h-2.jpg') }}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <p class="card-text">This is a wider card with supporting text below as a natural

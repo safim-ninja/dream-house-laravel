@@ -7,7 +7,7 @@
                 <div class="col-6">
                     <h3 class="">Trx Image proof</h3>
                     <img class="shadow bg-secondary" style="height: 200px; width: 400px"
-                        src="images/payments/{{ $payment->trximage }}" class="rounded float-start"
+                        src="{{ asset('public/images/payments') }}/{{ $payment->trximage }}" class="rounded float-start"
                         alt="...">
                 </div>
 

@@ -24,21 +24,21 @@
                             <div id="myCarousel{{ $indx }}" class="carousel slide" data-bs-ride="false">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
+                                        {{-- <img class="d-block w-100" src="{{ asset('public/images/ads') }}/{{ $ad->photo1 }}"
                                             alt="First slide"> --}}
-                                        <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
+                                        <img style="height: 320px;" src="{{ asset('public/images/ads') }}/{{ $ad->photo1 }}"
                                             alt="">
                                     </div>
                                     <div class="carousel-item">
-                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo2 }}"
+                                        {{-- <img class="d-block w-100" src="{{ asset('public/images/ads') }}/{{ $ad->photo2 }}"
                                             alt="Second slide"> --}}
-                                        <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo2 }}"
+                                        <img style="height: 320px;" src="{{ asset('public/images/ads') }}/{{ $ad->photo2 }}"
                                             alt="">
                                     </div>
                                     <div class="carousel-item">
-                                        {{-- <img class="d-block w-100" src="{{ asset('images/ads') }}/{{ $ad->photo3 }}"
+                                        {{-- <img class="d-block w-100" src="{{ asset('public/images/ads') }}/{{ $ad->photo3 }}"
                                             alt="Third slide"> --}}
-                                        <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo3 }}"
+                                        <img style="height: 320px;" src="{{ asset('public/images/ads') }}/{{ $ad->photo3 }}"
                                             alt="">
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                         interval: 2000
                                     });
                                 </script> --}}
-                            {{-- <img style="height: 320px;" src="{{ asset('images/ads') }}/{{ $ad->photo1 }}"
+                            {{-- <img style="height: 320px;" src="{{ asset('public/images/ads') }}/{{ $ad->photo1 }}"
                                     alt=""> --}}
                         </div>
                         <div class="detail-box">
